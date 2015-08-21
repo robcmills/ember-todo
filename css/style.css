@@ -2,3 +2,14 @@
 .ember-application {
     margin: 20px;
 }
+
+.title { color: #f23818; }
+.form-control:focus { border-color: #f23818; }
+
+.todo-item .delete-todo { 
+  color: red;
+  position: absolute; 
+  right: 0; 
+  top: 4px; 
+  visibility: hidden; }
+  .todo-item:hover .delete-todo { visibility: visible; }

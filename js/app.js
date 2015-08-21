@@ -65,6 +65,8 @@ Todo.TodoInputComponent = Ember.TextField.extend({
 });
 
 Todo.TodoItemComponent = Ember.Component.extend({
+  tagName: 'li',
+  classNames: ['list-group-item', 'todo-item'],
   actions: {
     delete(todo) {
       console.log('item-component deleteTodo', this.get('todo'));

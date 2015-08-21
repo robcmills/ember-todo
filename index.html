@@ -3,37 +3,43 @@
 <head>
   <meta charset="utf-8">
   <title>Ember Todo</title>
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <script type="text/x-handlebars">
-    <h2>Ember Todo</h2>
-    {{outlet}}
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-md-6 col-md-offset-3'>
+          <h2 class='title display-2 text-center'>Ember 2.0 Todo</h2>
+          {{outlet}}
+        </div>
+      </div>
+    </div>
   </script>
 
   <script type="text/x-handlebars" id="todos">
-    <h3>Todos</h3>
-
-    {{todo-input id="new-todo" type="text" value=newTitle 
-      action="createTodo" placeholder="What needs to be done?"}}
-
+    {{todo-input id="new-todo" class='form-control form-control-lg' 
+      type="text" value=newTitle action="createTodo" 
+      placeholder="What needs to be done?"}}
+    <br>
     {{#todo-list todos=model as |todo|}}
       {{todo-item todo=todo delete='deleteTodo'}}
     {{/todo-list}}
   </script>
 
   <script type="text/x-handlebars" id="components/todo-item">
-    <li>{{todo.title}}</li>
-    <button {{action "delete" todo}}>Delete</button>
+    {{todo.title}}
+    <button class='btn btn-link delete-todo' 
+      {{action "delete" todo}}>×</button>
   </script>
 
   <script type="text/x-handlebars" id="components/todo-list">
-    {{#each todos as |todo|}}
-      {{yield todo}}
-    {{else}}
-      <li>Nothing todo</li>
-    {{/each}}
+    <ul class='list-group todo-list'>
+      {{#each todos as |todo|}}
+        {{yield todo}}
+      {{/each}}
+    </ul>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
