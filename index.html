@@ -24,14 +24,16 @@
       placeholder="What needs to be done?"}}
     <br>
     {{#todo-list todos=model as |todo|}}
-      {{todo-item todo=todo delete='deleteTodo'}}
+      {{todo-item todo=todo 
+        toggleComplete='toggleComplete' delete='deleteTodo'}}
     {{/todo-list}}
   </script>
 
   <script type="text/x-handlebars" id="components/todo-item">
+    {{input type='checkbox' checked=todo.isCompleted}} &nbsp;
     {{todo.title}}
     <button class='btn btn-link delete-todo' 
-      {{action "delete" todo}}>×</button>
+      {{action "delete"}}>×</button>
   </script>
 
   <script type="text/x-handlebars" id="components/todo-list">

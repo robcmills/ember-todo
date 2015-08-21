@@ -44,8 +44,11 @@ Todo.TodosRoute = Ember.Route.extend({
       this.controllerFor('todos').set('newTitle', '');
     },
     deleteTodo: function(todo) {
-      console.log('route deleteTodo', todo);
       todo.destroyRecord();
+    },
+    toggleComplete: function(todo) {
+      todo.toggleProperty('isCompleted');
+      todo.save();
     }
   }
 });
@@ -65,11 +68,18 @@ Todo.TodoInputComponent = Ember.TextField.extend({
 });
 
 Todo.TodoItemComponent = Ember.Component.extend({
-  tagName: 'li',
-  classNames: ['list-group-item', 'todo-item'],
+  tagName: 'button',
+  classNameBindings: [':todo-item', ':list-group-item', 
+    'todo.isCompleted:completed'],
+  attributeBindings: ['type'],
+  type: 'button',
+
+  click: function() {
+    this.sendAction('toggleComplete', this.get('todo'));
+  },
+
   actions: {
-    delete(todo) {
-      console.log('item-component deleteTodo', this.get('todo'));
+    delete() {
       this.sendAction('delete', this.get('todo'));
     }
   }
