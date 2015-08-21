@@ -9,23 +9,31 @@
 <body>
   <script type="text/x-handlebars">
     <h2>Ember Todo</h2>
-
     {{outlet}}
   </script>
 
   <script type="text/x-handlebars" id="todos">
     <h3>Todos</h3>
-    {{todo-list todos=model}}
+
+    {{todo-input id="new-todo" type="text" value=newTitle 
+      action="createTodo" placeholder="What needs to be done?"}}
+
+    {{#todo-list todos=model as |todo|}}
+      {{todo-item todo=todo delete='deleteTodo'}}
+    {{/todo-list}}
+  </script>
+
+  <script type="text/x-handlebars" id="components/todo-item">
+    <li>{{todo.title}}</li>
+    <button {{action "delete" todo}}>Delete</button>
   </script>
 
   <script type="text/x-handlebars" id="components/todo-list">
-    <ul>
-      {{#each todos as |todo|}}
-        <li>{{todo.title}}</li>
-      {{else}}
-        <li>Nothing todo</li>
-      {{/each}}
-    </ul>
+    {{#each todos as |todo|}}
+      {{yield todo}}
+    {{else}}
+      <li>Nothing todo</li>
+    {{/each}}
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
