@@ -30,7 +30,7 @@
   </script>
 
   <script type="text/x-handlebars" id="components/todo-item">
-    {{input type='checkbox' checked=todo.isCompleted}} &nbsp;
+    <span class="dot">{{#if todo.isCompleted}}✓{{else}}●{{/if}}</span> &nbsp;
     {{todo.title}}
     <button class='btn btn-link delete-todo' 
       {{action "delete"}}>×</button>
@@ -52,5 +52,11 @@
   <script src="js/app.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">robcmills</p>
+    </div>
+  </footer>
 </body>
 </html>
