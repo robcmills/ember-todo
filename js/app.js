@@ -43,9 +43,6 @@ Todo.TodosRoute = Ember.Route.extend({
       todo.save();
       this.controllerFor('todos').set('newTitle', '');
     },
-    saveTodo: function(todo) {
-      todo.save();
-    },
     deleteTodo: function(todo) {
       todo.destroyRecord();
     },
@@ -89,8 +86,8 @@ Todo.TodoItemComponent = Ember.Component.extend({
 
   actions: {
     edit() {
-      console.log('item edit action');
       this.set('isEditing', true);
+      // because input is inside #if block and not currently inDom
       Ember.run.next(this, function(){
         this.$('input').focus();
       });
@@ -101,9 +98,8 @@ Todo.TodoItemComponent = Ember.Component.extend({
       this.set('isEditing', false);
     },
     save() {
-      console.log('item save');
+      this.get('todo').save();
       this.set('isEditing', false);
-      this.sendAction('save', this.get('todo'));
     },
     delete() {
       this.sendAction('delete', this.get('todo'));
