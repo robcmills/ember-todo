@@ -43,6 +43,9 @@ Todo.TodosRoute = Ember.Route.extend({
       todo.save();
       this.controllerFor('todos').set('newTitle', '');
     },
+    saveTodo: function(todo) {
+      todo.save();
+    },
     deleteTodo: function(todo) {
       todo.destroyRecord();
     },
@@ -68,17 +71,30 @@ Todo.TodoInputComponent = Ember.TextField.extend({
 });
 
 Todo.TodoItemComponent = Ember.Component.extend({
-  tagName: 'button',
+  tagName: 'li',
   classNameBindings: [':todo-item', ':list-group-item', 
-    'todo.isCompleted:completed'],
-  attributeBindings: ['type'],
-  type: 'button',
+    'isEditing:editing', 'todo.isCompleted:completed'],
+  isEditing: false,
 
   click: function() {
+    if(this.get('isEditing')){ return; }
     this.sendAction('toggleComplete', this.get('todo'));
   },
 
   actions: {
+    edit() {
+      console.log('item edit action');
+      this.set('isEditing', true);
+      Ember.run.next(this, function(){
+        this.$('input').focus();
+      });
+      return false;
+    },
+    save() {
+      console.log('item save');
+      this.set('isEditing', false);
+      this.sendAction('save', this.get('todo'));
+    },
     delete() {
       this.sendAction('delete', this.get('todo'));
     }

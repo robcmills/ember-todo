@@ -27,16 +27,21 @@
     <br>
     {{#todo-list todos=model as |todo|}}
       {{todo-item todo=todo 
-        toggleComplete='toggleComplete' delete='deleteTodo'}}
+        toggleComplete='toggleComplete' 
+        save='saveTodo' 
+        delete='deleteTodo'}}
     {{/todo-list}}
   </script>
 
   <script type="text/x-handlebars" id="components/todo-item">
-    <span class="dot">{{#if todo.isCompleted}}✓{{else}}●{{/if}}</span> &nbsp;
-    {{todo.title}}&nbsp;
-    <i class='edit-todo fa fa-pencil'></i>
-    <button class='btn btn-link delete-todo' 
-      {{action "delete"}}>×</button>
+    {{#if isEditing}}
+      {{input type='text' value=todo.title class='form-control' enter='save'}}
+    {{else}}
+      <span class="dot">{{#if todo.isCompleted}}✓{{else}}●{{/if}}</span>
+      {{todo.title}}
+      <i class='edit-todo fa fa-pencil' {{action 'edit' bubbles=false}}></i>
+      <button class='btn btn-link delete-todo' {{action "delete"}}>×</button>
+    {{/if}}
   </script>
 
   <script type="text/x-handlebars" id="components/todo-list">

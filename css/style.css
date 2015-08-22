@@ -6,11 +6,17 @@ body { background-color: rgb(250, 244, 241); }
 
 .title { margin: 20px 0; }
 
+.todo-item { }
+.todo-item:hover { cursor: pointer; }
 .todo-item:focus { outline: 0; }
 .todo-item.completed { opacity: 0.5; }
+
+.todo-item .dot { margin-right: 0.5rem; }
 .todo-item.completed .dot { color: darkgreen; }
-.todo-item .edit-todo { visibility: hidden; }
+
+.todo-item .edit-todo { margin-left: 10px; visibility: hidden; }
 .todo-item .edit-todo:hover { color: darkgreen; }
+
 .todo-item .delete-todo { 
   color: #f23818;
   position: absolute; 
