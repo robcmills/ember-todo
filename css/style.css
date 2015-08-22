@@ -9,13 +9,17 @@ body { background-color: rgb(250, 244, 241); }
 .todo-item:focus { outline: 0; }
 .todo-item.completed { opacity: 0.5; }
 .todo-item.completed .dot { color: darkgreen; }
+.todo-item .edit-todo { visibility: hidden; }
+.todo-item .edit-todo:hover { color: darkgreen; }
 .todo-item .delete-todo { 
   color: #f23818;
   position: absolute; 
   right: 0; 
   top: 4px; 
   visibility: hidden; }
+  .todo-item:hover .edit-todo,
   .todo-item:hover .delete-todo { visibility: visible; }
+  .todo-item.completed:hover .edit-todo { display: none; }
 
 .footer {
   bottom: 0;

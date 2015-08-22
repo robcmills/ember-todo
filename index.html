@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Ember Todo</title>
+  <!-- <link rel="stylesheet" href="css/fa/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -31,7 +33,8 @@
 
   <script type="text/x-handlebars" id="components/todo-item">
     <span class="dot">{{#if todo.isCompleted}}✓{{else}}●{{/if}}</span> &nbsp;
-    {{todo.title}}
+    {{todo.title}}&nbsp;
+    <i class='edit-todo fa fa-pencil'></i>
     <button class='btn btn-link delete-todo' 
       {{action "delete"}}>×</button>
   </script>
