@@ -35,12 +35,15 @@
 
   <script type="text/x-handlebars" id="components/todo-item">
     {{#if isEditing}}
-      {{input type='text' value=todo.title class='form-control' enter='save'}}
+      {{input type='text' value=todo.title class='form-control' 
+        enter='save' focus-out='save' escape-press='cancel'}}
     {{else}}
       <span class="dot">{{#if todo.isCompleted}}✓{{else}}●{{/if}}</span>
       {{todo.title}}
-      <i class='edit-todo fa fa-pencil' {{action 'edit' bubbles=false}}></i>
-      <button class='btn btn-link delete-todo' {{action "delete"}}>×</button>
+      <i class='edit-todo fa fa-pencil' title='Edit' 
+        {{action 'edit' bubbles=false}}></i>
+      <button class='btn btn-link delete-todo' title='Delete'
+        {{action "delete"}}>×</button>
     {{/if}}
   </script>
 

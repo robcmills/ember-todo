@@ -75,6 +75,12 @@ Todo.TodoItemComponent = Ember.Component.extend({
   classNameBindings: [':todo-item', ':list-group-item', 
     'isEditing:editing', 'todo.isCompleted:completed'],
   isEditing: false,
+  attributeBindings: ['title'],
+
+  title: Ember.computed('todo.isCompleted', function(){
+    return this.get('todo.isCompleted') ? 
+      'Click to mark as incomplete' : 'Click to mark as completed';
+  }),
 
   click: function() {
     if(this.get('isEditing')){ return; }
@@ -89,6 +95,10 @@ Todo.TodoItemComponent = Ember.Component.extend({
         this.$('input').focus();
       });
       return false;
+    },
+    cancel() {
+      this.get('todo').rollbackAttributes();
+      this.set('isEditing', false);
     },
     save() {
       console.log('item save');
