@@ -12,9 +12,9 @@ The classic todo app implemented with Ember-2.0.0 and Bootstrap-4.0
 aws s3 sync  \
   ~/code/ember/ember-todo  \
   s3://robcmills.net/ember-todo  \
-  --dryrun  \
   --exclude '*.DS_Store'  \
   --exclude '*.pyc'  \
   --exclude '.git/*'  \
-  --exclude 'env/*' 
+  --exclude 'env/*'  \
+  --dryrun
 ```
