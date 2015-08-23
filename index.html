@@ -8,9 +8,22 @@
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+  <div id='ember-application'></div>
+
+  <footer class="footer">
+    <div class="container">
+      <a class='github-repo' href='http://github.com/robcmills/ember-todo.git' target='_blank'>
+        <img src='img/git-hub.png'/>
+      </a>
+      <a href='http://robcmills.net' target='_blank'>robcmills</a>
+    </div>
+  </footer>
+
+
   <script type="text/x-handlebars">
-    <div class='container-fluid'>
+    <div class='todo-application container-fluid'>
       <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
           <h2 class='title display-1 text-center'>Ember 2.0 Todo</h2>
@@ -62,11 +75,6 @@
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
 
-  <footer class="footer">
-    <div class="container">
-      <p class="text-muted">robcmills</p>
-      <!-- todo : link to repo -->
-    </div>
-  </footer>
 </body>
+
 </html>

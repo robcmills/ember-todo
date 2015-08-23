@@ -1,7 +1,7 @@
 
 // app
 
-Todo = Ember.Application.create();
+Todo = Ember.Application.create({rootElement: '#ember-application'});
 
 Todo.ApplicationAdapter = DS.LSAdapter.extend({
   namespace: 'todo'

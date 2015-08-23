@@ -1,10 +1,12 @@
 
-body { background-color: rgb(250, 244, 241); }
+body { background-color: rgb(250, 244, 241); height: 100%; }
 
 .title, .dot { color: #f23818; }
 .form-control:focus { border-color: #f23818; }
 
 .title { margin: 20px 0; }
+
+.todo-list { margin-bottom: 8em; }
 
 .todo-item { }
 .todo-item:hover { cursor: pointer; }
@@ -29,7 +31,11 @@ body { background-color: rgb(250, 244, 241); }
 
 .footer {
   bottom: 0;
-  height: 40px;
-  position: absolute;
+  opacity: 0.65;
+  padding: 1em;
+  position: fixed;
   text-align: center;
-  width: 100%; }
+  width: 100%; 
+  z-index: -1; }
+  .footer a { color: black; display: block; }
+  .footer .github-repo img { height: 65px; }
