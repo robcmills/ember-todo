@@ -1,5 +1,7 @@
 
-body { background-color: rgb(250, 244, 241); height: 100%; }
+body { height: 100%; }
+
+body, .todo-application { background-color: rgb(250, 244, 241); }
 
 .title, .dot { color: #f23818; }
 .form-control:focus { border-color: #f23818; }
